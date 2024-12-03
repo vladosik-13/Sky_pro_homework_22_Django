@@ -18,3 +18,16 @@ class Product(models.Model):
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
         ordering = ['name']
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, verbose_name='наименование категории', help_text='Введите наименование категории')
+    description = models.TextField (null=True, blank=True, verbose_name='описание категории')
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'категория'
+        verbose_name_plural = 'категории'
+        ordering = ['name']
