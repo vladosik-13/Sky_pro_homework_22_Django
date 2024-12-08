@@ -8,5 +8,5 @@ app_name = "catalog"
 urlpatterns = [
     path("home/", views.home, name="home"),
     path("contacts/", views.contacts, name="contacts"),
-    path ('', product_list)
+    path ('', product_list, name="product_list"),
 ]
