@@ -10,7 +10,11 @@
             {{ form.as_p }}
           </div>
           <button type="submit" class="btn-primary">
+            {% if object %}
+            Coхранить
+            {% else %}
             Создать
+            {% endif %}
           </button>
         </div>
       </form>
