@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Блог: {{ object.title }}{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">{{ object.title }}</h1>
+            <p class="lead text-body-secondary">{{ object.content }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="{% url 'blogs:blog_update' object.pk %}" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                    <a href="{% url 'blogs:blog_delete' object.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+                    <a href="{% url 'blogs:blog_list' %}" class="btn btn-sm btn-outline-secondary">Назад к списку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
