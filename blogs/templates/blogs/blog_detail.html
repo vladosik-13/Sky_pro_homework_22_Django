@@ -8,6 +8,7 @@
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">{{ object.title }}</h1>
             <p class="lead text-body-secondary">{{ object.content }}</p>
+            <p class="text-muted">Просмотров: {{ object.views_count }}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <a href="{% url 'blogs:blog_update' object.pk %}" class="btn btn-sm btn-outline-secondary">Изменить</a>
