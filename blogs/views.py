@@ -9,6 +9,9 @@ class BlogListView(ListView):
     template_name = 'blogs/blog_list.html'
     context_object_name = 'object_list'
 
+    def get_queryset(self):
+        return Blog.objects.filter(is_published=True)
+
 
 class BlogDetailView(DetailView):
     model = Blog
@@ -24,7 +27,7 @@ class BlogDetailView(DetailView):
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'is_published']
     success_url = reverse_lazy('blogs:blog_list')
     template_name = 'blogs/blog_form.html'
 
@@ -36,7 +39,7 @@ class BlogCreateView(CreateView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'is_published']
     template_name = 'blogs/blog_form.html'
 
     def get_context_data(self, **kwargs):
