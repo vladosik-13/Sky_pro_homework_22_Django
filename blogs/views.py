@@ -7,13 +7,13 @@ from .models import Blog
 class BlogListView(ListView):
     model = Blog
     template_name = 'blogs/blog_list.html'
-    context_object_name = 'object_list'  # По умолчанию используется 'object_list', но можно явно указать
+    context_object_name = 'object_list'
 
 
 class BlogDetailView(DetailView):
     model = Blog
     template_name = 'blogs/blog_detail.html'
-    context_object_name = 'object'  # По умолчанию используется 'object', но можно явно указать
+    context_object_name = 'object'
 
 
 class BlogCreateView(CreateView):
