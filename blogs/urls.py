@@ -6,9 +6,9 @@ from blogs.views import BlogListView, BlogDetailView, BlogCreateView, BlogUpdate
 app_name = BlogsConfig.name
 
 urlpatterns = [
-    path('', BlogListView.as_view(), name='blog_list'),
-    path('<int:pk>/', BlogDetailView.as_view(), name='blog_detail'),
-    path('create/', BlogCreateView.as_view(), name='blog_create'),
-    path('<int:pk>/update/', BlogUpdateView.as_view(), name='blog_update'),
-    path('<int:pk>/delete/', BlogDeleteView.as_view(), name='blog_delete'),
+    path('', BlogListView.as_view(), name='home'),
+    path('article/<int:pk>/', BlogDetailView.as_view(), name='article_detail'),
+    path('article/create/', BlogCreateView.as_view(), name='article_create'),
+    path('article/<int:pk>/update/', BlogUpdateView.as_view(), name='article_update'),
+    path('article/<int:pk>/delete/', BlogDeleteView.as_view(), name='article_delete'),
 ]
