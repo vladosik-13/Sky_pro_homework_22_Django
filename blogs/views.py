@@ -15,6 +15,12 @@ class BlogDetailView(DetailView):
     template_name = 'blogs/blog_detail.html'
     context_object_name = 'object'
 
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        self.object.views_count += 1
+        self.object.save()
+        return response
+
 
 class BlogCreateView(CreateView):
     model = Blog
