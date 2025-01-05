@@ -37,13 +37,15 @@ class BlogCreateView(CreateView):
 class BlogUpdateView(UpdateView):
     model = Blog
     fields = ['title', 'content']
-    success_url = reverse_lazy('blogs:blog_list')
     template_name = 'blogs/blog_form.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Редактирование блога'
         return context
+
+    def get_success_url(self):
+        return reverse_lazy('blogs:blog_detail', kwargs={'pk': self.object.pk})
 
 
 class BlogDeleteView(DeleteView):
