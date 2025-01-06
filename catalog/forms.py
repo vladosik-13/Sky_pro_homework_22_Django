@@ -23,3 +23,9 @@ class ProductForm(forms.ModelForm):
             if word.lower() in data.lower():
                 raise ValidationError(f'Описание не должно содержать слова "{word}"')
         return data
+
+    def clean_price(self):
+        price = self.cleaned_data.get('price')
+        if price is not None and price < 0:
+            raise ValidationError('Цена не может быть отрицательной.')
+        return price
