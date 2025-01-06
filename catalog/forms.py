@@ -1,9 +1,25 @@
-from django.forms import ModelForm
-
+from django import forms
+from django.core.exceptions import ValidationError
 from catalog.models import Product
 
 
-class ProductForm(ModelForm):
+class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['name', 'price', 'description', 'image', 'category']
+
+    def clean_name(self):
+        data = self.cleaned_data['name']
+        forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
+        for word in forbidden_words:
+            if word.lower() in data.lower():
+                raise ValidationError(f'Название не должно содержать слова "{word}"')
+        return data
+
+    def clean_description(self):
+        data = self.cleaned_data['description']
+        forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
+        for word in forbidden_words:
+            if word.lower() in data.lower():
+                raise ValidationError(f'Описание не должно содержать слова "{word}"')
+        return data
