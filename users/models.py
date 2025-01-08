@@ -1,11 +1,10 @@
-# users/models.py
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from .managers import CustomUserManager
 
 class CustomUser(AbstractUser):
-    username_validator = None
+    username = None  # Удаляем поле username
     email = models.EmailField(unique=True, verbose_name=_('Email'))
     phone_number = models.CharField(max_length=35, unique=True, null=True, blank=True, verbose_name=_('Phone Number'))
     avatar = models.ImageField(upload_to='avatars', blank=True, null=True, verbose_name=_('Avatar'))
