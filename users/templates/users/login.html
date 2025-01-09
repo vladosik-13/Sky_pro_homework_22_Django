@@ -1,12 +1,13 @@
 {% extends 'catalog/base.html' %}
 
 {% block content %}
-{% block title %}<h1>Вход</h1>{% endblock %}
+
 <div class="container">
   <div class="row">
     <div class="col-6">
       <form class="row" method="post">
         <div class="card">
+          <h1>Вход</h1>
           <div class="card-body">
             {% csrf_token %}
             {{ form.as_p }}
