@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+
+from django.conf.global_settings import LOGIN_REDIRECT_URL
 from dotenv import load_dotenv
 
 
@@ -142,6 +144,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.CustomUser"
+
+LOGIN_REDIRECT_URL = 'product_detail'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
