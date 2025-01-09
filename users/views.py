@@ -6,7 +6,7 @@ from .forms import CustomUserCreationForm
 class RegisterView(CreateView):
     template_name = 'users/register.html'
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('users:login')  # Указываем маршрут для входа с использованием пространства имён
+    success_url = reverse_lazy('users:login')
 
     def form_valid(self, form):
         user = form.save()
