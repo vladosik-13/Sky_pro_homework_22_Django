@@ -1,26 +1,28 @@
-from itertools import product
-from lib2to3.fixes.fix_input import context
-
-from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from catalog.models import Product
 
 
-def home(request):
-    return render(request, "catalog/home.html")
+class ProductListView(ListView):
+    model = Product
 
 
-def contacts(request):
-    return render(request, "catalog/contacts.html")
+class ProductDetailView(DetailView):
+    model = Product
 
 
-def product_list(request):
-    products = Product.objects.all()
-    context = {"products":  products}
-    return render(request, "catalog/product_list.html", context)
+class ProductCreateView(CreateView):
+    model = Product
+    fields = '__all__'
+    success_url = reverse_lazy('catalog:products')
 
 
-def product_details(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    context = {"product": product}
-    return render(request, "catalog/product_details.html", context)
+class ProductUpdateView(UpdateView):
+    model = Product
+    fields = '__all__'
+    success_url = reverse_lazy('catalog:products')
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:products')
