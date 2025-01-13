@@ -2,7 +2,7 @@
 name = "sky-pro-django-home-work-22"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Владислав Кошелев. testvlad@gmail.com"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
