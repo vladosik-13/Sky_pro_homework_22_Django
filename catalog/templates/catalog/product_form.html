@@ -9,13 +9,16 @@
             {% csrf_token %}
             {{ form.as_p }}
           </div>
-          <button type="submit" class="btn-primary">
-            {% if object %}
-            Coхранить
-            {% else %}
-            Создать
-            {% endif %}
-          </button>
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">
+              {% if object %}
+              Сохранить
+              {% else %}
+              Создать
+              {% endif %}
+            </button>
+            <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Назад</a>
+          </div>
         </div>
       </form>
     </div>
