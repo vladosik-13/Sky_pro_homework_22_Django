@@ -1,8 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
-from catalog.forms import ProductForm
+from catalog.forms import ProductForm, ProductModeratorForm
 from catalog.models import Product
 
 
@@ -36,5 +36,21 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'catalog/product_confirm_delete.html'
     success_url = reverse_lazy('catalog:product_list')
+
+
+class ProductUnpublishView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = Product
+    form_class = ProductModeratorForm
+    template_name = 'catalog/product_unpublish.html'
+    success_url = reverse_lazy('catalog:product_list')
+    permission_required = 'catalog.can_unpublish_product'
+    raise_exception = True
+
+    def form_valid(self, form):
+        product = form.instance
+        if product.is_published:
+            product.is_published = False
+            product.save()
+        return super().form_valid(form)
 
 
