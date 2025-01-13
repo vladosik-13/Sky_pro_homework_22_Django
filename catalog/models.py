@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Product(models.Model):
     name = models.CharField(
         max_length=100,
@@ -33,6 +32,11 @@ class Product(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name="дата последнего изменения"
     )
+    is_published = models.BooleanField(
+        default=False,
+        verbose_name="опубликован",
+        help_text="Укажите, опубликован ли продукт"
+    )
 
     def __str__(self):
         return f"{self.name} {self.category} {self.price}"
@@ -41,7 +45,6 @@ class Product(models.Model):
         verbose_name = "продукт"
         verbose_name_plural = "продукты"
         ordering = ["name", "category", "price", "created_at", "updated_at"]
-
 
 class Category(models.Model):
     name = models.CharField(
