@@ -37,3 +37,9 @@ class ProductForm(forms.ModelForm):
         self.fields['price'].widget.attrs.update({'class': 'form-control', 'placeholder': 'введите цену'})
         self.fields['image'].widget.attrs.update({'class': 'form-control'})
         self.fields['category'].widget.attrs.update({'class': 'form-control'})
+
+
+class ProductModeratorForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['is_published']
