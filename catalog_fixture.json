@@ -1,0 +1,52 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "бананы",
+        "description": "бананы эквадорские",
+        "image": "",
+        "category": 2,
+        "price": "13.95",
+        "created_at": "2024-12-04T17:44:37.540Z",
+        "updated_at": "2024-12-04T17:44:37.540Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "name": "облепиха",
+        "description": "облепиха замороженная дальневосточная",
+        "image": "",
+        "category": 3,
+        "price": "13.00",
+        "created_at": "2024-12-04T17:45:54.322Z",
+        "updated_at": "2024-12-04T17:45:54.322Z"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name": "овощи",
+        "description": "свежие овощи"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name": "фрукты",
+        "description": "свежие фрукты"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+        "name": "ягоды",
+        "description": "ягоды"
+    }
+}
+]
