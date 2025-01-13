@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form class="row" method="post">
+        <div class="card">
+          <h1>Вход</h1>
+          <div class="card-body">
+            {% csrf_token %}
+            {{ form.as_p }}
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Войти</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

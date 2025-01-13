@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Блоги{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Блоги</h1>
+            <p class="lead text-body-secondary">Все наши блоги</p>
+            <a class="btn btn-primary" href="{% url 'blogs:blog_create' %}" role="button">Создать новый блог</a>
+        </div>
+    </div>
+</section>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for blog in object_list %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ blog.title }}</h5>
+                            <p class="card-text">{{ blog.content|truncatewords:30 }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{% url 'blogs:blog_detail' blog.pk %}" class="btn btn-sm btn-outline-secondary">Просмотреть</a>
+                                    <a href="{% url 'blogs:blog_update' blog.pk %}" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                                    <a href="{% url 'blogs:blog_delete' blog.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col">
+                    <p class="text-center">Нет доступных блогов.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
