@@ -1,7 +1,7 @@
+# forms.py
 from django import forms
 from django.core.exceptions import ValidationError
 from catalog.models import Product, Category
-
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -37,7 +37,6 @@ class ProductForm(forms.ModelForm):
         self.fields['price'].widget.attrs.update({'class': 'form-control', 'placeholder': 'введите цену'})
         self.fields['image'].widget.attrs.update({'class': 'form-control'})
         self.fields['category'].widget.attrs.update({'class': 'form-control'})
-
 
 class ProductModeratorForm(forms.ModelForm):
     class Meta:
