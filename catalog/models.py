@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Product(models.Model):
     name = models.CharField(
@@ -36,6 +37,12 @@ class Product(models.Model):
         default=False,
         verbose_name="опубликован",
         help_text="Укажите, опубликован ли продукт"
+    )
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="владелец",
+        related_name="products"
     )
 
     def __str__(self):

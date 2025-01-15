@@ -1,4 +1,3 @@
-# forms.py
 from django import forms
 from django.core.exceptions import ValidationError
 from catalog.models import Product, Category
