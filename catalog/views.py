@@ -5,12 +5,21 @@ from catalog.forms import ProductForm, ProductModeratorForm
 from catalog.models import Product
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
+from django.core.cache import cache
 
 
 class ProductListView(ListView):
     model = Product
     template_name = 'catalog/product_list.html'
     context_object_name = 'object_list'
+
+    def get_queryset(self):
+        queryset = cache.get('product_list_queryset')
+        if not queryset:
+            queryset = super().get_queryset()
+            cache.set('product_list_queryset', queryset, 60 *15)
+        return queryset
+
 
 @method_decorator(cache_page(60 * 15), name='dispatch')
 class ProductDetailView(DetailView):
