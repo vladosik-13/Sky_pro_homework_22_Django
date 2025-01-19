@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "catalog",
     "blogs",
     "users",
@@ -145,22 +144,22 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.CustomUser"
 
-LOGIN_REDIRECT_URL = 'product_detail'
+LOGIN_REDIRECT_URL = "product_detail"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'testvlad59@yandex.ru'
-EMAIL_HOST_PASSWORD = 'fjgjhzlvvypiuzhk'
+EMAIL_HOST_USER = "testvlad59@yandex.ru"
+EMAIL_HOST_PASSWORD = "fjgjhzlvvypiuzhk"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-LOGIN_URL = 'users:login'
+LOGIN_URL = "users:login"
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
     }
 }
